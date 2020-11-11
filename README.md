@@ -10,7 +10,7 @@ Setup a simple GCP terraform project and add the following module in order to de
 
 ```tf
 module "gcp-minecraft" {
-  source = "https://github.com/DSchroer/GCPMinecraft"
+  source = "github.com/DSchroer/GCPMinecraft"
 
   name         = "minecraft"
   domain       = "mine.schroer.ca"

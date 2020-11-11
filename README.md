@@ -24,7 +24,7 @@ The module exposes the following variables for use:
 * __name__: The name of the deployment
 * __domain__: Domain to attach DNS entries to
 * __docker_image__: Image containing your minecraft deployment
-* __world_path__: Path to the world in your server
+* __world_path__: Path to the world in your docker container
 * __machine_type__: The instance type [default: e2-standard-2]
 * __time_zone__: The machine timezone [default: America/Toronto]
 * __shutdown_time__: The time of day that will shut the machine down [default: 00:00]

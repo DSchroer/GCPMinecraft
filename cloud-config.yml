@@ -1,0 +1,31 @@
+#cloud-config
+
+users:
+- name: minecraftuser
+  uid: 2000
+
+write_files:
+- path: /etc/systemd/system/minecraft.service
+  permissions: 0644
+  owner: root
+  content: |
+    [Unit]
+    Description=Docker minecraft container
+
+    [Service]
+    User=minecraftuser
+    ExecStartPre=/usr/bin/docker-credential-gcr configure-docker
+    ExecStart=/usr/bin/docker run --name=minecraft -p 25565:25565/udp -p 25565:25565/tcp -v /var/world:${world_path} ${image}
+    ExecStop=/usr/bin/docker stop minecraft
+    ExecStopPost=/usr/bin/docker rm minecraft
+    Restart=on-failure
+    RestartSec=5s
+
+runcmd:
+- mkdir /var/world
+- chmod a+rw /var/world
+- timedatectl set-timezone ${time_zone}
+- shutdown -h ${shutdown_time}
+- usermod -a -G docker minecraftuser
+- systemctl daemon-reload
+- systemctl start minecraft.service

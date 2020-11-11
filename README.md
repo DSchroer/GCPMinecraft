@@ -1,6 +1,6 @@
 # GCP Minecraft
 
-This project provides a terraform module that allows you to deploy a cheap Minecraft server on Google Cloud Platform. It is designed to be cheap. The server is intended for infrequent use and will shut itself off regularly to reduce code. 
+This project provides a terraform module that allows you to deploy a Minecraft server on Google Cloud Platform. It is designed to be cheap. The server is intended for infrequent use and will shut itself off regularly to reduce cost. The server will take a docker image that runs the exact image so it is very configurable.
 
 The module assumes that you will be accessing it via a domain, it created a cloud DNS entry that points to the server to allow you to access it easily. 
 
